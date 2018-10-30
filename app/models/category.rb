@@ -1,3 +1,3 @@
-class Category < ActiveRecord::Base
-	has_many :articles
+class Category < ApplicationRecord
+    has_many :articles
 end
