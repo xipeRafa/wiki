@@ -1,0 +1,74 @@
+rails new wiki
+
+rails g model Article title:string content:text
+
+rails g controller Articles
+
+articles_controller.rb
+   def index
+   end
+routes.rb
+   resources :articles
+   root 'articles#index'
+rake db:migrate
+
+rails generate simple_form:install --bootstrap
+
+rails generate devise:install
+rails g devise:views
+
+rails g devise User
+rake db:migrate
+
+article.rb
+   belongs_to :user
+user.rb
+   has_many :articles
+
+rails g migration add_user_id_to_articles user_id:integer:index
+rake db:migrate
+
+rails g model Category name:string
+rake db:migrate
+
+rails g migration add_category_id_to_articles category_id:integer
+rake db:migrate
+
+article.rb
+   belongs_to :user
+   belongs_to :category
+category.rb
+   has_many :articles
+//--0.40 minutes---//
+rails c
+
+Category
+Category.connection
+Category
+Category.create(name: "Art")
+Category.create(name: "Technology")
+Category.create(name: "Politics")
+Category.count
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
